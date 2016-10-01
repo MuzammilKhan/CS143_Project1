@@ -29,7 +29,7 @@ function divide_by_zero($eqn){
 <body>
 
 <h1>Calculator</h1>
-(By Muzammil Khan)<br />
+(By Muzammil Khan and Saad Syed)<br />
 Type an expression in the following box (e.g., 10.5+20*3/25).
 
 <p>
@@ -55,7 +55,12 @@ Here are some(but not limit to) reasonable test cases:
 
 <?php
 $expr = $_GET['expr'];
-$eqn = str_replace(' ', '', $expr);
+if(preg_match('/[\d]+ +[\d]+/', $expr)){ //check for spaces between digits
+	echo "<h2>Result</h2>";
+	echo "<br>Invalid Expression!</br>";
+	return false;
+}
+$eqn = str_replace(' ', '', $expr); //remove all spaces for easier regex checking
 
 if(!is_valid_equation($eqn)){
 	echo "<h2>Result</h2>";

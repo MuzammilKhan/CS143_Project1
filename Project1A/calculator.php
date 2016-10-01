@@ -64,16 +64,16 @@ $eqn = str_replace(' ', '', $expr); //remove all spaces for easier regex checkin
 
 if(!is_valid_equation($eqn)){
 	echo "<h2>Result</h2>";
-	echo "<br>Invalid Expression!</br>";
+	echo "Invalid Expression!</br>";
 } else if(divide_by_zero($eqn)){
 	echo "<h2>Result</h2>";
-	echo "<br>Division by zero error!</br>";
+	echo "Division by zero error!</br>";
 } else if ($eqn == ''){
 } else {
 	$tmp = str_replace('--', '- -', $eqn); //eval gets confused if you have --
 	$result = eval('return '.$tmp.';');
 	echo "<h2>Result</h2>";
-	echo "<br> $eqn = $result </br>";
+	echo "$eqn = $result </br>";
 }
 
 

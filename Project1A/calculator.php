@@ -8,6 +8,8 @@ function is_valid_equation($eqn){
 	} else if (preg_match('/[^\d]+\.+[^\d]+/', $eqn) || preg_match('/[\d]*\.+[^\d]+/', $eqn) || preg_match('/[^\d]+\.+[\d]*/', $eqn)) { 
 	//check for '.' between operators and '.' not between digits
 		return false;
+	} else if (preg_match('/^[0]{2,}/', $eqn) || preg_match('/[^1-9]+[0]{2,}/', $eqn)) {
+		return false;
 	} else {
 		return true;
 	}
@@ -55,10 +57,14 @@ Here are some(but not limit to) reasonable test cases:
 
 <?php
 $expr = $_GET['expr'];
-if(preg_match('/[\d]+ +[\d]+/', $expr)){ //check for spaces between digits
+
+if(empty($expr)) {
+	return;
+	
+} else if(preg_match('/[\d]+ +[\d]+/', $expr) ){ //check for spaces between digits 
 	echo "<h2>Result</h2>";
 	echo "<br>Invalid Expression!</br>";
-	return false;
+	return;
 }
 $eqn = str_replace(' ', '', $expr); //remove all spaces for easier regex checking
 

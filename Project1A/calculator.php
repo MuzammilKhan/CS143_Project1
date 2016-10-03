@@ -61,9 +61,10 @@ $expr = $_GET['expr'];
 if(empty($expr)) {
 	return;
 	
-} else if(preg_match('/[\d]+ +[\d]+/', $expr) ){ //check for spaces between digits 
+} else if(preg_match('/[\d]+ +[\d]+/', $expr) || preg_match('/^ +$/', $expr) || preg_match('/[^1-9]+0+[1-9]+/', $expr) || preg_match('/^0+[1-9]+/', $expr) ){ 
+//check for spaces between digits or only spaces or invalid numbers ex: 09, 009, etc
 	echo "<h2>Result</h2>";
-	echo "<br>Invalid Expression!</br>";
+	echo "Invalid Expression!</br>";
 	return;
 }
 $eqn = str_replace(' ', '', $expr); //remove all spaces for easier regex checking

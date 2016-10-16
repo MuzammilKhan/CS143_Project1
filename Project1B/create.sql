@@ -3,8 +3,8 @@
 CREATE TABLE Movie (
 	id INT NOT NULL,
 	title VARCHAR(100) NOT NULL,
-	year INT, 
-	rating VARCHAR(10), 
+	year INT NOT NULL,
+	rating VARCHAR(10),
 	company VARCHAR(50),
 	PRIMARY KEY(id)
 ) ENGINE=INNODB;

@@ -5,7 +5,7 @@
 <p>Type an SQL query in the following box: </p>
 Example: <tt>SELECT * FROM Actor WHERE id=10;</tt><br />
 <p>
-<form action="." method="GET">
+<form action="query.php" method="GET">
 <textarea name="query" cols="60" rows="8"></textarea><br />
 <input type="submit" value="Submit" />
 </form>
@@ -14,7 +14,8 @@ Example: <tt>SELECT * FROM Actor WHERE id=10;</tt><br />
 </p>
 
 <?php 
-$db = new mysqli('localhost', 'cs143', '', 'CS143'); //double check this. Is it connecting to the right db?
+//$db = new mysqli('localhost', 'cs143', '', 'CS143'); //IMPORTANT: Use this one when done
+$db = new mysqli('localhost', 'cs143', '', 'TEST'); //USE THIS FOR TESTING
 
 if($db->connect_errno > 0){ //return error if connection failed
     die('Unable to connect to database [' . $db->connect_error . ']');
@@ -32,25 +33,27 @@ if (!($rs = $db->query($sanitized_query))){  //Do we want error handling this wa
     exit(1);
 }
 else{
-	echo '<h3>Results from MySQL: </h3></br>';
-	echo '<table border="1" cellpadding="2" cellspacing="1">';
+	echo '<h3>Results from MySQL: </h3>';
+	echo '<table border="1" cellpadding="1" cellspacing="1">';
 	
-	while($finfo = $rs->fetch_field()) {
-	echo '<tr>';
-	foreach($row as $key=>$value) {
-		echo '<td>',$value,'</td>';	
-	}
-	}
+    echo '<tr>';  //FIX THIS! The column headers are wrong and there are too many
+    $finfo = $rs->fetch_field();
+    foreach($finfo as $key=>$value) {
+    echo '<td>',$value,'</td>';  
+    }
+    echo '</tr>';
 
     while($row = $rs->fetch_row()) {
 	echo '<tr>';
 	foreach($row as $key=>$value) {
 		echo '<td>',$value,'</td>';
 	}
-	$rs->free();
+    echo '</tr>';
 	}
+    echo '</table>';
+    $rs->free();
 
-$db->close();
+    $db->close();
 
 }
 ?>

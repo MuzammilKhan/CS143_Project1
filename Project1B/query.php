@@ -36,15 +36,14 @@ else{
 	echo '<h3>Results from MySQL: </h3>';
 	echo '<table border="1" cellpadding="1" cellspacing="1">';
 	
-    echo '<tr>';  //FIX THIS! The column headers are wrong and there are too many
-    $finfo = $rs->fetch_field();
-    foreach($finfo as $key=>$value) {
-    echo '<td>',$value,'</td>';  
+    echo '<tr align="center">';  //get column names and print them
+    while($finfo = $rs->fetch_field()){
+    echo '<td><b>',$finfo->name,'</b></td>';  
     }
     echo '</tr>';
 
-    while($row = $rs->fetch_row()) {
-	echo '<tr>';
+    while($row = $rs->fetch_row()) { //get rows of data and print them
+	echo '<tr align="center">';
 	foreach($row as $key=>$value) {
 		echo '<td>',$value,'</td>';
 	}

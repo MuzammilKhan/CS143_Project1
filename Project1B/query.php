@@ -22,11 +22,13 @@ if($db->connect_errno > 0){ //return error if connection failed
 }
 
 //get query and apply escapes to special chars
-$query = $_GET["query"]; 
+$query = trim($_GET["query"]); 
 $sanitized_query = $db->real_escape_string($query);
 
+if(strlen(trim($sanitized_query)) == 0) { //if empty query do nothing
+}
 //return error if bad query
-if (!($rs = $db->query($sanitized_query))){  //Do we want error handling this way?
+else if (!($rs = $db->query($sanitized_query))){  //Do we want error handling this way?
     $errmsg = $db->error;
     print "Query failed: $errmsg <br />";
     $db->close();

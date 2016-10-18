@@ -27,7 +27,6 @@ CREATE TABLE Director (
        id INT NOT NULL,
        last VARCHAR(20),
        first VARCHAR(20),
-       sex VARCHAR(6),
        dob DATE NOT NULL,
        dod DATE,
        -- A director can be uniquely identified by his/her ID

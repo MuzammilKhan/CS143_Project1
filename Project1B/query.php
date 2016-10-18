@@ -47,6 +47,9 @@ else{
     while($row = $rs->fetch_row()) { //get rows of data and print them
 	echo '<tr align="center">';
 	foreach($row as $key=>$value) {
+        if(empty($value)){
+        $value = "N/A";
+        }
 		echo '<td>',$value,'</td>';
 	}
     echo '</tr>';

@@ -14,8 +14,8 @@ Example: <tt>SELECT * FROM Actor WHERE id=10;</tt><br />
 </p>
 
 <?php 
-//$db = new mysqli('localhost', 'cs143', '', 'CS143'); //IMPORTANT: Use this one when done
-$db = new mysqli('localhost', 'cs143', '', 'TEST'); //USE THIS FOR TESTING
+$db = new mysqli('localhost', 'cs143', '', 'CS143'); //IMPORTANT: Use this one when done
+//$db = new mysqli('localhost', 'cs143', '', 'TEST'); //USE THIS FOR TESTING
 
 if($db->connect_errno > 0){ //return error if connection failed
     die('Unable to connect to database [' . $db->connect_error . ']');

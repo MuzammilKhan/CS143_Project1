@@ -1,133 +1,103 @@
-<!-- Used w3 schools example heavily to create sidebar: http://www.w3schools.com/howto/howto_js_sidenav.asp -->
+<!-- Using template from http://v4-alpha.getbootstrap.com/examples/cover/# -->
 <!DOCTYPE html>
-<html>
-<style>
-body {
-    font-family: "Lato", sans-serif;
-    transition: background-color .5s;
-}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Use this if we want an icon for the tab<link rel="icon" href="../../favicon.ico">  -->
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
+    <!-- Tab title: <title>Cover Template for Bootstrap</title> -->
 
-.sidenav h1{
-    color: #f1f1f1;
-    font-size: 28px;
-    text-indent: 30px;
-}
+    <!-- Bootstrap core CSS -->
+    <link href="CSS/bootstrap.min.css" rel="stylesheet">
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s
-}
+    <!-- Custom styles for this template -->
+    <link href="CSS/cover.css" rel="stylesheet">
+  </head>
 
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
+  <body>
 
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
+    <div class="site-wrapper">
 
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
+      <div class="site-wrapper-inner">
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-<body>
+        <div class="cover-container">
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#"><h3>Search</h3></a>
-  <h1>Add:</h1>
-  <a href="#">Actor</a>
-  <a href="#">Movie</a>
-  <a href="#">Comments</a>
-  <a href="#">Actor to movie</a>
-  <a href="#">Director to movie</a>
-</div>
+          <div class="inner cover">
+             <h3 class="cover-heading">Add a movie to database</h3> 
+            <!-- <p class="lead">Type what you are looking for in the search box below. Then select whether you are searching for actors or movies</p> -->
+             <!-- <p class="lead"> -->
+              <!-- Makes a big button: <a href="#" class="btn btn-lg btn-secondary">Learn more</a>  -->
+            <!-- </p> -->
+          </div>
 
-<div id="main">
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-    <h1>Add Movie </h1>
-    <p>Please fill in the desired fields below then press the submit button.</p>
-    <form action="addMovie.php" method="GET">
-      Title:<br>
-      <input name="Title" style="width: 300px;"><br>
-      Year:<br>
-      <input name="Year" style="width: 300px;"><br>
-      Company:<br>
-      <input name="Company" style="width: 300px;"><br>
-      MPAA Rating:<br>
-      <select id = "MovieRating"> <!-- Do we want to allow no rating aka null as a value? -->
-        <option value="G" selected>G</option>
-        <option value="PG">PG</option>
-        <option value="PG-13">PG-13</option>
-        <option value="R">R</option>
-        <option value="NC-17">NC-17</option>
-      </select><br>
-      Genres:<br> <!-- Check if these are all the genres or if there are less or extra here. Do we want to restrict this? -->
-      <input type="checkbox" name ="Action" Action<br>
-      <input type="checkbox" name ="Adult" Adult<br>
-      <input type="checkbox" name ="Adventure" Adventure<br>
-      <input type="checkbox" name ="Animation" Animation<br>
-      <input type="checkbox" name ="Comedy" Comedy<br>
-      <input type="checkbox" name ="Crime" Crime<br>
-      <input type="checkbox" name ="Documentary" Documentary<br>
-      <input type="checkbox" name ="Drama" Drama<br>
-      <input type="checkbox" name ="Family" Family<br>
-      <input type="checkbox" name ="Fantasy" Fantasy<br>
-      <input type="checkbox" name ="Horror" Horror<br>
-      <input type="checkbox" name ="Musical" Musical<br>
-      <input type="checkbox" name ="Mystery" Mystery<br>
-      <input type="checkbox" name ="Romance" Romance<br>
-      <input type="checkbox" name ="Sci-Fi" Sci-Fi<br>
-      <input type="checkbox" name ="Short" Short<br>
-      <input type="checkbox" name ="Thriller" Thriller<br>
-      <input type="checkbox" name ="War" War<br>
-      <input type="checkbox" name ="Western" Western<br>
-      <input type="submit" value="Submit" />
-    </form>
+          <div class="input-group">
+            <span class="input-group-addon">Title:</span>
+            <input type="title" class="form-control">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Year:</span>
+            <input type="year" class="form-control"> 
+          </div>
+          <div class="input-group">    
+            <span class="input-group-addon">Company:</span>
+            <input type="company" class="form-control">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Year:</span>
+            <input type="year" class="form-control">  
+          </div>  
+          <div class="input-group">
+            <span class="input-group-addon">MPAA Rating:</span>
+            <select  class="form-control">
+              <option>G</option>
+              <option>PG</option>
+              <option>PG-13</option>
+              <option>R</option>
+              <option>NC-17</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Movie Genre:</span>
+              <input type="checkbox" name="genre[]" value="Action">Action</input>
+              <input type="checkbox" name="genre[]" value="Adult">Adult</input>
+              <input type="checkbox" name="genre[]" value="Adventure">Adventure</input>
+              <input type="checkbox" name="genre[]" value="Animation">Animation</input>
+              <input type="checkbox" name="genre[]" value="Comedy">Comedy</input>
+              <input type="checkbox" name="genre[]" value="Crime">Crime</input>
+              <input type="checkbox" name="genre[]" value="Documentary">Documentary</input>
+              <input type="checkbox" name="genre[]" value="Drama">Drama</input>
+              <input type="checkbox" name="genre[]" value="Family">Family</input>
+              <input type="checkbox" name="genre[]" value="Fantasy">Fantasy</input>
+              <input type="checkbox" name="genre[]" value="Horror">Horror</input>
+              <input type="checkbox" name="genre[]" value="Musical">Musical</input>
+              <input type="checkbox" name="genre[]" value="Mystery">Mystery</input>
+              <input type="checkbox" name="genre[]" value="Romance">Romance</input>
+              <input type="checkbox" name="genre[]" value="Sci-Fi">Sci-Fi</input>
+              <input type="checkbox" name="genre[]" value="Short">Short</input>
+              <input type="checkbox" name="genre[]" value="Thriller">Thriller</input>
+              <input type="checkbox" name="genre[]" value="War">War</input>
+              <input type="checkbox" name="genre[]" value="Western">Western</input>         
+          </div>
+          <button type="add" class="btn btn-success">Add</button>
+        </div>
+         
+        </div>
 
-</div>
+      </div>
 
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
+    </div>
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.body.style.backgroundColor = "white";
-}
-</script>
-     
-</body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="JS/jquery.min.js"> </script>
+    <script>window.jQuery || document.write('<script src="JS/jquery.min.js"><\/script>')</script>
+    <script src="JS/tether.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
+  </body>
 </html>
-

@@ -118,10 +118,10 @@
   $dbname = "TEST";
 
   // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
+  $db = new mysqli($servername, $username, $password, $dbname);
   // Check connection
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
+  if ($db->connect_error) {
+      die("Connection failed: " . $db->connect_error);
   } 
   
   if(isset($_GET["Submit"])){
@@ -137,15 +137,17 @@
     }
     else {
       echo "Attempting to add... ";
-      $maxIDtmp = $db->query("SELECT MAX(id) FROM MaxMovieID");
+      $sanitized_query = $db->real_escape_string(trim("SELECT MAX(id) FROM MaxMovieID"));
+      $maxIDtmp = $db->query($sanitized_query);
       //echo $db->error;// or die(mysqli_error($db));
       echo "1... ";
-      $maxIDArr = mysql_fetch_array($maxIDtmp);
+      $maxIDArr = $maxIDtmp->fetch_array(MYSQLI_NUM);
       $maxID = $maxIDArr[0];
       $newMaxID = $maxID + 1;
+      echo $newMaxID;
 
       $sql = "INSERT INTO Movie (id,title, year, rating, company)
-      VALUES ('newMaxID','$title', '$year', '$rating', '$company')";
+      VALUES ('$newMaxID','$title', '$year', '$rating', '$company')";
       $db->query($sql) or die(mysqli_error($db));
       $db->query("UPDATE MaxMovieID SET id=$newMaxID WHERE id=$maxID");
       echo $db->error;// or die(mysqli_error($db));
@@ -164,7 +166,7 @@
   }
   
 
-  $conn->close();
+  $db->close();
 ?>    
 
     <!-- Bootstrap core JavaScript

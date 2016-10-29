@@ -33,23 +33,23 @@
               <nav class="nav nav-masthead">
                 <a class="nav-link" href="#">Search</a>
                 <a class="nav-link" href="#">Add Movie</a>
-                <a class="nav-link" href="#">Add Actor</a>
+                <a class="nav-link" href="#">Add director</a>
                 <a class="nav-link" href="#">Add Comments</a>
-                <a class="nav-link active" href="#">Add Actor To Movie</a>
+                <a class="nav-link active" href="#">Add director To Movie</a>
                 <a class="nav-link" href="#">Add Director To Movie</a>
               </nav>
             </div>
           </div>
 
           <div class="inner cover">
-             <h3 class="cover-heading">Add a movie and actor relation to database</h3> 
-            <!-- <p class="lead">Type what you are looking for in the search box below. Then select whether you are searching for actors or movies</p> -->
+             <h3 class="cover-heading">Add a movie and director relation to database</h3> 
+            <!-- <p class="lead">Type what you are looking for in the search box below. Then select whether you are searching for directors or movies</p> -->
              <!-- <p class="lead"> -->
               <!-- Makes a big button: <a href="#" class="btn btn-lg btn-secondary">Learn more</a>  -->
             <!-- </p> -->
           </div>
 
-          <form action="addMovieActor.php" method="GET">
+          <form action="addMovieDirector.php" method="GET">
             <?php
               $servername = "localhost";
               $username = "cs143";
@@ -64,18 +64,18 @@
                   die("Connection failed: " . $db->connect_error);
               }
 
-              $actor_query = $db->real_escape_string(trim("SELECT id, first, last, dob FROM Actor"));
-              $actor_results = $db->query($actor_query);
-              $actor_list="";
-              while($actor_arr = $actor_results->fetch_array(MYSQLI_ASSOC)) {
-                $id = $actor_arr["id"];
-                $first = $actor_arr["first"];
-                $last = $actor_arr["last"];
-                $dob = $actor_arr["dob"];
-                $actor_list .= "<option value=\"$id\">".$first." ".$last." (".$dob.")</option>";
+              $director_query = $db->real_escape_string(trim("SELECT id, first, last, dob FROM Director"));
+              $director_results = $db->query($director_query);
+              $director_list="";
+              while($director_arr = $director_results->fetch_array(MYSQLI_ASSOC)) {
+                $id = $director_arr["id"];
+                $first = $director_arr["first"];
+                $last = $director_arr["last"];
+                $dob = $director_arr["dob"];
+                $director_list .= "<option value=\"$id\">".$first." ".$last." (".$dob.")</option>";
               }
 
-              $actor_results->free();
+              $director_results->free();
 
               $movie_query = $db->real_escape_string(trim("SELECT id, title, year FROM Movie"));
               $movie_results = $db->query($movie_query);
@@ -90,9 +90,9 @@
               $movie_results->free();
             ?>
             <div class="input-group">
-              <span class="input-group-addon">Actor:</span>
-              <select name="actor" class="form-control">
-                <?=$actor_list?>
+              <span class="input-group-addon">Director:</span>
+              <select name="director" class="form-control">
+                <?=$director_list?>
               </select>
             </div>
             <div class="input-group">
@@ -100,10 +100,6 @@
               <select name="movie" class="form-control">
                 <?=$movie_list?>
               </select>
-            </div>
-            <div class="input-group">
-              <span class="input-group-addon">Role:</span>
-              <input name="role" type="text" class="form-control">
             </div>
             <div class="input-group">
               <input type="submit" name="Submit" value="Submit" class="btn btn-success"></input>
@@ -136,27 +132,26 @@
   } 
   
   if(isset($_GET["Submit"])) {
-    $aid = $_GET["actor"];
+    $did = $_GET["director"];
     $mid = $_GET["movie"];
-    $role = trim($_GET["role"]);
+    
 
-    $error = (strlen($role) == 0 || empty(($aid)) || empty(($mid)));
+    $error = (empty(($did)) || empty(($mid)));
     if ($error) {
         echo "Did you forget to fill in a field?";
     }
     else {
       echo "Attempting to add... ";
 
-      $sql = "INSERT INTO MovieActor (mid, aid, role)
-          VALUES ('$mid', '$aid', '$role')";
+      $sql = "INSERT INTO MovieDirector (mid, did)
+          VALUES ('$mid', '$did')";
       
       $db->query($sql) or die(mysqli_error($db));
 
       echo $db->error;// or die(mysqli_error($db)); MAYBE REMOVE
-      echo "2...";
 
       echo $db->error;
-      echo "New movie, actor relation added successfully";
+      echo "New movie, director relation added successfully";
     }
     
   }

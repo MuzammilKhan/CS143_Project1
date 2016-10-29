@@ -31,8 +31,8 @@
             <div class="inner">
               <h3 class="masthead-brand">CS 143: Movie Database</h3>
               <nav class="nav nav-masthead">
-                <a class="nav-link active" href="#">Search</a>
-                <a class="nav-link" href="#">Add Movie</a>
+                <a class="nav-link" href="#">Search</a>
+                <a class="nav-link active" href="#">Add Movie</a>
                 <a class="nav-link" href="#">Add Actor</a>
                 <a class="nav-link" href="#">Add Comments</a>
                 <a class="nav-link" href="#">Add Actor To Movie</a>
@@ -144,7 +144,6 @@
       $maxIDArr = $maxIDtmp->fetch_array(MYSQLI_NUM);
       $maxID = $maxIDArr[0];
       $newMaxID = $maxID + 1;
-      echo $newMaxID;
 
       $sql = "INSERT INTO Movie (id,title, year, rating, company)
       VALUES ('$newMaxID','$title', '$year', '$rating', '$company')";

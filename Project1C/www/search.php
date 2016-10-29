@@ -41,14 +41,28 @@
             </div>
           </div>
 
-          <div class="inner cover">
+          <!-- <div class="inner cover">
             <h1 class="cover-heading">Search!</h1>
-            <!-- <p class="lead">Type what you are looking for in the search box below. Then select whether you are searching for actors or movies</p> -->
-             <!-- <p class="lead"> -->
-              <!-- Makes a big button: <a href="#" class="btn btn-lg btn-secondary">Learn more</a>  -->
-            <!-- </p> -->
-          </div>
+             <p class="lead">Type what you are looking for in the search box below. Then select whether you are searching for actors or movies</p> 
+             <p class="lead"> 
+               Makes a big button: <a href="#" class="btn btn-lg btn-secondary">Learn more</a>  
+             </p> 
+          </div> -->
 
+          <form action="addMovie.php" method="GET">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <select name="searchtype" class="selectpicker form-control" data-style="btn-primary">
+                  <option value="actor">Actor</option>
+                  <option value="movie">Movie</option>
+                </select>
+              </div>
+              <input  name="search" type="text" class="form-control" placeholder="Enter here" >
+              <span class="input-group-btn"><button  class="btn btn-info" type="button">Search</button></span>
+
+
+
+            </div>
           <div class="mastfoot">
             <div class="inner">
               <p>Made by Muzammil Khan and Saad Syed </a>.</p>

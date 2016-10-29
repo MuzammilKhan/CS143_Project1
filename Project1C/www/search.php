@@ -49,7 +49,7 @@
              </p> 
           </div> -->
 
-          <form action="addMovie.php" method="GET">
+          <form action="search.php" method="GET">
             <div class="input-group">
               <div class="input-group-btn">
                 <select name="searchtype" class="selectpicker form-control" data-style="btn-primary">

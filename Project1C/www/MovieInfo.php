@@ -50,10 +50,9 @@
 
             <div>
               <?php
-                $search = $_GET["search"];
-                $operation = $_GET["operation"];
+                $id = $_GET["id"];
 
-                if (!empty(($search))) {
+                if (!empty(($id))) {
                   $servername = "localhost";
                   $username = "cs143";
                   $password = "";
@@ -67,26 +66,76 @@
                       die("Connection failed: " . $db->connect_error);
                   }
 
-                  $tokens = preg_split('/\s+/', $search);
-
-                  $sql_query = "SELECT id, title, year FROM Movie WHERE (title LIKE '%$tokens[0]%')";
-                  unset($tokens[0]);
-
-                  foreach ($tokens as $token) {
-                   $sql_query .= " AND (title LIKE '%$token%')";
-                  }
+                  $sql_query = "SELECT * FROM Movie WHERE id=".$id;
 
                   $sanitized_query = $sql_query;//$db->real_escape_string($sql_query);
                   $query_results = $db->query($sanitized_query);
 
-                  while ($row = $query_results->fetch_array(MYSQLI_ASSOC)) {
-                    $id = $row["id"];
+                    $row = $query_results->fetch_array(MYSQLI_ASSOC); 
                     $title = $row["title"];
                     $year = $row["year"];
-                    echo "<a href=MovieInfo.php?id=".$id.">".$title." (".$year.")</a><br>";
-                  }
+                    $rating= $row["rating"];
+                    $company = $row["company"];
+                    $query_results->free();
+                    echo "Title: ".$title."<br>";
+                    echo "Year: ".$year."<br>";
+                    echo "MPAA Rating: ".$rating."<br>";
+                    echo "Producer: ".$company."<br>";
 
-                  $query_results->free();
+                    //get genres
+                    echo "Genres:<br>"; 
+                    $sql_query2 = "SELECT * FROM MovieGenre WHERE mid=".$id;
+                    $query_results2 = $db->query($sql_query2); 
+                    while ($row = $query_results2->fetch_array(MYSQLI_ASSOC)) {
+                      $genre = $row["genre"];
+                      echo $genre."<br>";
+                    } 
+                    $query_results2->free(); 
+
+                    //get director
+                    echo "Director:<br>"; 
+                    $sql_query3 = "SELECT * FROM MovieDirector WHERE mid=".$id;
+                    $query_results3 = $db->query($sql_query3);
+                    while ($row = $query_results3->fetch_array(MYSQLI_ASSOC)) {
+                      $did = $row["did"];
+                      $sql_query31 = "SELECT * FROM Director WHERE did=".$did;
+                      $query_results31 = $db->query($sql_query31);
+                      $row2 = $query_results31->fetch_array(MYSQLI_ASSOC); 
+                      $first = $row2["first"];
+                      $last = $row2["last"];
+                      $dob = $row2["dob"];
+                      $dod = $row2["dod"];
+                      //if(empty($dod)){$dod = "";}
+                      echo $first." ".$last." (".$dob."-".$dod.")<br>";
+                      $query_results31->free();
+                    }
+                    $query_results3->free();
+
+                    
+                    echo "Actors:<br>";
+                     $sql_query4 = "SELECT * FROM MovieActor WHERE mid=".$id;
+                    $query_results4 = $db->query($sql_query4);
+                    while ($row = $query_results4->fetch_array(MYSQLI_ASSOC)) {
+                      $aid = $row["aid"];
+                      $sql_query41 = "SELECT * FROM Actor WHERE aid=".$aid;
+                      $query_results41 = $db->query($sql_query41);
+                      $row2 = $query_results41->fetch_array(MYSQLI_ASSOC); 
+                      $first = $row2["first"];
+                      $last = $row2["last"];
+                      $dob = $row2["dob"];
+                      $dod = $row2["dod"];
+                      $role = $row2["role"];
+                      //if(empty($dod)){$dod = "";}
+                      echo $first." ".$last." (".$dob."-".$dod.") role: ".$role."<br>";
+                      $query_results41->free();
+                    }
+                    $query_results4->free(); 
+                   
+                    //get reviews
+                    echo "Reviews:<br>"; 
+
+
+
                   $db->close();
                 }
 
@@ -101,7 +150,7 @@
 
       </div>
 
-    </div>
+
 
 
     <!-- Bootstrap core JavaScript

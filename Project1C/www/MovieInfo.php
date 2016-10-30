@@ -117,14 +117,14 @@
                     $query_results4 = $db->query($sql_query4);
                     while ($row = $query_results4->fetch_array(MYSQLI_ASSOC)) {
                       $aid = $row["aid"];
-                      $sql_query41 = "SELECT * FROM Actor WHERE aid=".$aid;
+                      $role = $row["role"];
+                      $sql_query41 = "SELECT * FROM Actor WHERE id=".$aid;
                       $query_results41 = $db->query($sql_query41);
                       $row2 = $query_results41->fetch_array(MYSQLI_ASSOC); 
                       $first = $row2["first"];
                       $last = $row2["last"];
                       $dob = $row2["dob"];
                       $dod = $row2["dod"];
-                      $role = $row2["role"];
                       //if(empty($dod)){$dod = "";}
                       echo $first." ".$last." (".$dob."-".$dod.") role: ".$role."<br>";
                       $query_results41->free();
@@ -133,6 +133,17 @@
                    
                     //get reviews
                     echo "Reviews:<br>"; 
+                     $sql_query5 = "SELECT * FROM Review WHERE mid=".$id;
+                    $query_results5 = $db->query($sql_query5);
+                    while ($row = $query_results5->fetch_array(MYSQLI_ASSOC)) {
+                      $name = $row["name"];
+                      $time = $row["time"];
+                      $rating= $row["rating"];
+                      $comment= $row["comment"];
+                      echo $name." ".$time." Rating: ".$rating."<br>".$comment;
+                      $query_results51->free();
+                    }
+                    $query_results5->free(); 
 
 
 

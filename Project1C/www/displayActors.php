@@ -72,9 +72,9 @@
                   $sql_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%$tokens[0]%' OR last LIKE '%$tokens[0]%')";
                   unset($tokens[0]);
 
-                  // foreach ($tokens as $token) {
-                  //   $sql_query .= " AND (first LIKE '%$token%' OR last LIKE '%$token%')";
-                  // }
+                   foreach ($tokens as $token) {
+                     $sql_query .= " AND (first LIKE '%$token%' OR last LIKE '%$token%')";
+                   }
 
                   $sanitized_query = $sql_query;//$db->real_escape_string($sql_query);
                   $query_results = $db->query($sanitized_query);

@@ -36,7 +36,7 @@
                     <a class="nav-link" href="addMovie.php">Add Movie</a>
                     <a class="nav-link" href="addReview.php">Add Review</a>
                     <a class="nav-link" href="addActor.php">Add Actor/Director</a>
-                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a><
+                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a>
                     <a class="nav-link" href="addMovieDirector.php">Add Director To Movie</a>
                   </nav>
             </div>

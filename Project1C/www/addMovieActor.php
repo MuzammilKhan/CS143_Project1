@@ -56,8 +56,7 @@
               $servername = "localhost";
               $username = "cs143";
               $password = "";
-              //$dbname = "CS143"; //USE THIS ONE WHEN SUBMITTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-              $dbname = "TEST";
+              $dbname = "CS143"; //USE THIS ONE WHEN SUBMITTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
               // Create connection
               $db = new mysqli($servername, $username, $password, $dbname);
@@ -124,19 +123,6 @@
 
 
 <?php
-  $servername = "localhost";
-  $username = "cs143";
-  $password = "";
-  //$dbname = "CS143"; //USE THIS ONE WHEN SUBMITTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  $dbname = "TEST";
-
-  // Create connection
-  $db = new mysqli($servername, $username, $password, $dbname);
-  // Check connection
-  if ($db->connect_error) {
-      die("Connection failed: " . $db->connect_error);
-  } 
-  
   if(isset($_GET["Submit"])) {
     $aid = $_GET["actor"];
     $mid = $_GET["movie"];

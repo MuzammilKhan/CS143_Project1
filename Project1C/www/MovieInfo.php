@@ -64,8 +64,7 @@
                   $servername = "localhost";
                   $username = "cs143";
                   $password = "";
-                  //$dbname = "CS143"; //USE THIS ONE WHEN SUBMITTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                  $dbname = "TEST";
+                  $dbname = "CS143"; //USE THIS ONE WHEN SUBMITTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                   // Create connection
                   $db = new mysqli($servername, $username, $password, $dbname);
@@ -141,7 +140,7 @@
                   $query_results4->free(); 
                  
                   //get reviews
-                  echo "Reviews:<br>"; 
+                  echo "<br>Reviews:<br>"; 
                    $sql_query5 = "SELECT * FROM Review WHERE mid=".$id;
                   $query_results5 = $db->query($sql_query5);
                   while ($row = $query_results5->fetch_array(MYSQLI_ASSOC)) {
@@ -149,8 +148,7 @@
                     $time = $row["time"];
                     $rating= $row["rating"];
                     $comment= $row["comment"];
-                    echo $name." ".$time." Rating: ".$rating."<br>".$comment;
-                    $query_results51->free();
+                    echo $name." ".$time."<br>Rating: ".$rating."<br>".$comment."<br>"."<br>";
                   }
                   $query_results5->free(); 
 

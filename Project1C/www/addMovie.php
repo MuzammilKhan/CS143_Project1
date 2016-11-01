@@ -116,8 +116,7 @@
   $servername = "localhost";
   $username = "cs143";
   $password = "";
-  //$dbname = "CS143"; //USE THIS ONE WHEN SUBMITTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  $dbname = "TEST";
+  $dbname = "CS143"; //USE THIS ONE WHEN SUBMITTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   // Create connection
   $db = new mysqli($servername, $username, $password, $dbname);

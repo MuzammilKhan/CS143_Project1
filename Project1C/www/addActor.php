@@ -128,7 +128,7 @@
     if ($error) {
         echo "Did you forget to fill in a field?";
     }
-    else if ($formaterror){
+    else if ($formaterror && !empty($dod)){
         echo "DOB and DOD must have the format YYYY-MM-DD";
     }
     else {
@@ -141,12 +141,21 @@
       $maxID = $maxIDArr[0];
       $newMaxID = $maxID + 1;
 
+      if($role == "Actor") {
       $stmnt = $db->prepare("INSERT INTO $role (id, last, first, sex, dob, dod)
           VALUES ('$newMaxID','$last', '$first', '$sex', '$dob', ?)");
-      $stmnt->bind_param('s', $dod);
+      $stmnt->bind_param('?', $dod);
       
       $stmnt->execute();
       $stmnt->close();
+    } else {
+      $stmnt = $db->prepare("INSERT INTO $role (id, last, first, dob, dod)
+          VALUES ('$newMaxID','$last', '$first', '$dob', ?)");
+      $stmnt->bind_param('?', $dod);
+      
+      $stmnt->execute();
+      $stmnt->close();      
+    }
       $db->query("UPDATE MaxPersonID SET id=$newMaxID WHERE id=$maxID");
       echo $db->error;// or die(mysqli_error($db));
       echo "2...";

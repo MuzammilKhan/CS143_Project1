@@ -65,7 +65,7 @@
                   die("Connection failed: " . $db->connect_error);
               }
 
-              $director_query = $db->real_escape_string(trim("SELECT id, first, last, dob FROM Director"));
+              $director_query = $db->real_escape_string(trim("SELECT * FROM Director"));
               $director_results = $db->query($director_query);
               $director_list="";
               while($director_arr = $director_results->fetch_array(MYSQLI_ASSOC)) {
@@ -73,7 +73,8 @@
                 $first = $director_arr["first"];
                 $last = $director_arr["last"];
                 $dob = $director_arr["dob"];
-                $director_list .= "<option value=\"$id\">".$first." ".$last." (".$dob.")</option>";
+                $dod = $director_arr["dod"];
+                $director_list .= "<option value=\"$id\">".$first." ".$last." (".$dob." - ".$dod.")</option>";
               }
 
               $director_results->free();

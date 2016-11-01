@@ -65,7 +65,7 @@
                   die("Connection failed: " . $db->connect_error);
               }
 
-              $actor_query = $db->real_escape_string(trim("SELECT id, first, last, dob FROM Actor"));
+              $actor_query = $db->real_escape_string(trim("SELECT * FROM Actor"));
               $actor_results = $db->query($actor_query);
               $actor_list="";
               while($actor_arr = $actor_results->fetch_array(MYSQLI_ASSOC)) {
@@ -73,7 +73,8 @@
                 $first = $actor_arr["first"];
                 $last = $actor_arr["last"];
                 $dob = $actor_arr["dob"];
-                $actor_list .= "<option value=\"$id\">".$first." ".$last." (".$dob.")</option>";
+                $dod = $actor_arr["dod"];
+                $actor_list .= "<option value=\"$id\">".$first." ".$last." (".$dob." - ".$dod.")</option>";
               }
 
               $actor_results->free();

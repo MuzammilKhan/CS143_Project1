@@ -142,16 +142,16 @@
       $newMaxID = $maxID + 1;
 
       if($role == "Actor") {
-      $stmnt = $db->prepare("INSERT INTO $role (id, last, first, sex, dob, dod)
+      $stmnt = $db->prepare("INSERT INTO Actor (id, last, first, sex, dob, dod)
           VALUES ('$newMaxID','$last', '$first', '$sex', '$dob', ?)");
-      $stmnt->bind_param('?', $dod);
+      $stmnt->bind_param('s', $dod);
       
       $stmnt->execute();
       $stmnt->close();
     } else {
-      $stmnt = $db->prepare("INSERT INTO $role (id, last, first, dob, dod)
+      $stmnt = $db->prepare("INSERT INTO Director (id, last, first, dob, dod)
           VALUES ('$newMaxID','$last', '$first', '$dob', ?)");
-      $stmnt->bind_param('?', $dod);
+      $stmnt->bind_param('s', $dod);
       
       $stmnt->execute();
       $stmnt->close();      

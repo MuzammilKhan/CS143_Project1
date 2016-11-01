@@ -140,19 +140,26 @@
                   $query_results4->free(); 
                  
                   //get reviews
-                  echo "<br>Reviews:<br>"; 
-                   $sql_query5 = "SELECT * FROM Review WHERE mid=".$id;
-                  $query_results5 = $db->query($sql_query5);
-                  while ($row = $query_results5->fetch_array(MYSQLI_ASSOC)) {
-                    $name = $row["name"];
-                    $time = $row["time"];
-                    $rating= $row["rating"];
-                    $comment= $row["comment"];
-                    echo $name." ".$time."<br>Rating: ".$rating."<br>".$comment."<br>"."<br>";
+                  $avg_rev_query = "SELECT AVG(rating) from Review WHERE mid=".$id;
+                  $avg_query_results = $db->query($avg_rev_query);
+                  $avg_rev_row = $avg_query_results->fetch_array(MYSQLI_NUM);
+                  $avg_rev = $avg_rev_row[0];
+                  if (empty($avg_rev)) {
+                    echo "<br>No Reviews Yet<br>";
+                  } else {
+                    echo "<br>Average Rating: ".$avg_rev."/5<br>";
+                    echo "<br>Reviews:<br>";
+                    $sql_query5 = "SELECT * FROM Review WHERE mid=".$id;
+                    $query_results5 = $db->query($sql_query5);
+                    while ($row = $query_results5->fetch_array(MYSQLI_ASSOC)) {
+                      $name = $row["name"];
+                      $time = $row["time"];
+                      $rating= $row["rating"];
+                      $comment= $row["comment"];
+                      echo $name." ".$time."<br>Rating: ".$rating."<br>".$comment."<br>"."<br>";
+                    }
+                    $query_results5->free(); 
                   }
-                  $query_results5->free(); 
-
-
 
                   $db->close();
                 }

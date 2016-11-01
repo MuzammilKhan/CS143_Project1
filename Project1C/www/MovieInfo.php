@@ -106,7 +106,7 @@
                   $query_results3 = $db->query($sql_query3);
                   while ($row = $query_results3->fetch_array(MYSQLI_ASSOC)) {
                     $did = $row["did"];
-                    $sql_query31 = "SELECT * FROM Director WHERE did=".$did;
+                    $sql_query31 = "SELECT * FROM Director WHERE id=".$did;
                     $query_results31 = $db->query($sql_query31);
                     $row2 = $query_results31->fetch_array(MYSQLI_ASSOC); 
                     $first = $row2["first"];

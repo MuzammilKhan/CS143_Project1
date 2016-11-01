@@ -34,10 +34,10 @@
                   <nav class="nav nav-masthead">
                     <a class="nav-link" href="search.php">Search</a>
                     <a class="nav-link" href="addMovie.php">Add Movie</a>
-                    <a class="nav-link active" href="addActor.php">Add Actor</a>
-                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a><br>
-                    <a class="nav-link" href="addMovieDirector.php">Add Director To Movie</a>
                     <a class="nav-link" href="addReview.php">Add Review</a>
+                    <a class="nav-link active" href="addActor.php">Add Actor/Director</a>
+                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a>
+                    <a class="nav-link" href="addMovieDirector.php">Add Director To Movie</a>
                   </nav>
             </div>
               

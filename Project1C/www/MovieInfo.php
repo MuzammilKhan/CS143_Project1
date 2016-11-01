@@ -38,7 +38,7 @@
               
                 <h3 class="masthead-brand">CS 143: Movie Database</h3>
                   <nav class="nav nav-masthead">
-                    <a class="nav-link active" href="search.php">Search</a>
+                    <a class="nav-link" href="search.php">Search</a>
                     <a class="nav-link" href="addMovie.php">Add Movie</a>
                     <a class="nav-link" href="addReview.php">Add Review</a>
                     <a class="nav-link" href="addActor.php">Add Actor/Director</a>

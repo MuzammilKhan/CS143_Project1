@@ -35,7 +35,7 @@
                     <a class="nav-link active" href="search.php">Search</a>
                     <a class="nav-link" href="addMovie.php">Add Movie</a>
                     <a class="nav-link" href="addActor.php">Add Actor</a>
-                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a>
+                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a><br>
                     <a class="nav-link" href="addMovieDirector.php">Add Director To Movie</a>
                     <a class="nav-link" href="addReview.php">Add Review</a>
                   </nav>

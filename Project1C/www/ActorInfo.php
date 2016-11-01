@@ -33,19 +33,22 @@
 
         <div class="cover-container">
 
-          <div>
-              <div class="inner">
+          <div class="masthead clearfix">
+            <div class="inner">
+              
                 <h3 class="masthead-brand">CS 143: Movie Database</h3>
                   <nav class="nav nav-masthead">
                     <a class="nav-link" href="search.php">Search</a>
                     <a class="nav-link" href="addMovie.php">Add Movie</a>
                     <a class="nav-link" href="addActor.php">Add Actor</a>
-                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a>
+                    <a class="nav-link" href="addMovieActor.php">Add Actor To Movie</a><br>
                     <a class="nav-link" href="addMovieDirector.php">Add Director To Movie</a>
-                    <a class="nav-link" href="addReview.php">Add Review</a>
+                    <a class="nav-link active" href="addReview.php">Add Review</a>
                   </nav>
-              </div>
+            </div>
+              
           </div>
+          
           <br>
           <div class="inner cover">
              <h3 class="cover-heading">Actor Search Results</h3> 

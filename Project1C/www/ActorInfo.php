@@ -92,28 +92,27 @@
 
 	                echo "<table style=\"width:100%\"><tr>";
 	                echo "<th>Name</th><th>Sex</th><th>Date of Birth</th><th>Date of Death</th></tr>";
-	                echo "<tr><td>$first $last</td><td>$sex</td><td>$dob</td><td>$dod</td></table>";
+	                echo "<tr><td>$first $last</td><td>$sex</td><td>$dob</td><td>$dod</td></table><br>";
 
 
-	                // $sql_query4 = "SELECT * FROM MovieActor WHERE mid=".$id;
-	                // $query_results4 = $db->query($sql_query4);
-	                // while ($row = $query_results4->fetch_array(MYSQLI_ASSOC)) {
-	                //   $aid = $row["aid"];
-	                //   $role = $row["role"];
-	                //   $sql_query41 = "SELECT * FROM Actor WHERE id=".$aid;
-	                //   $query_results41 = $db->query($sql_query41);
-	                //   $row2 = $query_results41->fetch_array(MYSQLI_ASSOC); 
-	                //   $first = $row2["first"];
-	                //   $last = $row2["last"];
-	                //   $dob = $row2["dob"];
-	                //   $dod = $row2["dod"];
-	                //   //if(empty($dod)){$dod = "";}
-	                //   echo "<tr><td>".$first." ".$last." (".$dob."-".$dod.")</td>";
-	                //   echo "<td>$role</td></tr>";
-	                //   $query_results41->free();
-	                // }
-	                // echo "</table>";
-	                // $query_results4->free(); 
+                  	echo "<table style=\"width:100%\"><tr><th>Movie Title</th><th>Role</th></tr>";
+	                $sql_query = "SELECT * FROM MovieActor WHERE aid=".$id;
+	                $query_results = $db->query($sql_query);
+	                while ($row = $query_results->fetch_array(MYSQLI_ASSOC)) {
+	                  $mid = $row["mid"];
+	                  $role = $row["role"];
+	                  $sql_query1 = "SELECT title, year FROM Movie WHERE id=".$mid;
+	                  $query_results1 = $db->query($sql_query1);
+	                  $row2 = $query_results1->fetch_array(MYSQLI_ASSOC); 
+	                  $title = $row2["title"];
+	                  $year = $row2["year"];
+	                  //if(empty($dod)){$dod = "";}
+	                  echo "<tr><td><a href=MovieInfo.php?id=".$mid.">".$title." ($year)</a></td>";
+	                  echo "<td>$role</td></tr>";
+	                  $query_results1->free();
+	                }
+	                echo "</table>";
+	                $query_results->free(); 
 
 
 

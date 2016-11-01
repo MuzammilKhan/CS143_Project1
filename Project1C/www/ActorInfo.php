@@ -33,7 +33,7 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
+          <div>
             <div class="inner">
               
                 <h3 class="masthead-brand">CS 143: Movie Database</h3>
@@ -92,7 +92,7 @@
 
 	                echo "<table style=\"width:100%\"><tr>";
 	                echo "<th>Name</th><th>Sex</th><th>Date of Birth</th><th>Date of Death</th></tr>";
-	                echo "<tr><td>$first $last</td><td>$dob</td><td>$dod</td></table>";
+	                echo "<tr><td>$first $last</td><td>$sex</td><td>$dob</td><td>$dod</td></table>";
 
 
 	                // $sql_query4 = "SELECT * FROM MovieActor WHERE mid=".$id;

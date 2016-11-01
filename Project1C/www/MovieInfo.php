@@ -33,7 +33,7 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
+          <div>
             <div class="inner">
               
                 <h3 class="masthead-brand">CS 143: Movie Database</h3>
@@ -114,7 +114,7 @@
                     $dob = $row2["dob"];
                     $dod = $row2["dod"];
                     //if(empty($dod)){$dod = "";}
-                    echo $first." ".$last." (".$dob."-".$dod.")<br>";
+                    echo $first." ".$last." (".$dob." - ".$dod.")<br>";
                     $query_results31->free();
                   }
                   $query_results3->free();
@@ -133,7 +133,7 @@
                     $dob = $row2["dob"];
                     $dod = $row2["dod"];
                     //if(empty($dod)){$dod = "";}
-                    echo "<tr><td>".$first." ".$last." (".$dob."-".$dod.")</td>";
+                    echo "<tr><td><a href=ActorInfo.php?id=".$aid.">".$first." ".$last." (".$dob." - ".$dod.")</a></td>";
                     echo "<td>$role</td></tr>";
                     $query_results41->free();
                   }

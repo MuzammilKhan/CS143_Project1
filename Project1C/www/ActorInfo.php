@@ -17,6 +17,12 @@
 
     <!-- Custom styles for this template -->
     <link href="CSS/cover.css" rel="stylesheet">
+
+    <style>
+      table, th, td {
+        text-align: left;
+      }
+    </style>
   </head>
 
   <body>
@@ -50,10 +56,9 @@
 
             <div>
               <?php
-                $search = $_GET["search"];
-                $operation = $_GET["operation"];
+                $id = $_GET["id"];
 
-                if (!empty(($search))) {
+                if (!empty(($id))) {
                   $servername = "localhost";
                   $username = "cs143";
                   $password = "";
@@ -67,27 +72,48 @@
                       die("Connection failed: " . $db->connect_error);
                   }
 
-                  $tokens = preg_split('/\s+/', $search);
-
-                  $sql_query = "SELECT id, first, last, dob FROM Actor WHERE (first LIKE '%$tokens[0]%' OR last LIKE '%$tokens[0]%')";
-                  unset($tokens[0]);
-
-                   foreach ($tokens as $token) {
-                     $sql_query .= " AND (first LIKE '%$token%' OR last LIKE '%$token%')";
-                   }
+                  $sql_query = "SELECT * FROM Actor WHERE id=".$id;
 
                   $sanitized_query = $sql_query;//$db->real_escape_string($sql_query);
                   $query_results = $db->query($sanitized_query);
 
-                  while ($row = $query_results->fetch_array(MYSQLI_ASSOC)) {
-                    $id = $row["id"];
-                    $first = $row["first"];
-                    $last = $row["last"];
-                    $dob = $row["dob"];
-                    echo "<a href=ActorInfo.php?id=".$id.">".$first." ".$last." (".$dob.")</a><br>";
-                  }
+	              	$row = $query_results->fetch_array(MYSQLI_ASSOC); 
+	                $id = $row["id"];
+	                $last = $row["last"];
+	                $first= $row["first"];
+	                $sex = $row["sex"];
+	                $dob = $row["dob"];
+	                $dod = $row["dod"];
+	                $query_results->free();
 
-                  $query_results->free();
+
+	                echo "<table style=\"width:100%\"><tr>";
+	                echo "<th>Name</th><th>Sex</th><th>Date of Birth</th><th>Date of Death</th></tr>";
+	                echo "<tr><td>$first $last</td><td>$dob</td><td>$dod</td></table>";
+
+
+	                // $sql_query4 = "SELECT * FROM MovieActor WHERE mid=".$id;
+	                // $query_results4 = $db->query($sql_query4);
+	                // while ($row = $query_results4->fetch_array(MYSQLI_ASSOC)) {
+	                //   $aid = $row["aid"];
+	                //   $role = $row["role"];
+	                //   $sql_query41 = "SELECT * FROM Actor WHERE id=".$aid;
+	                //   $query_results41 = $db->query($sql_query41);
+	                //   $row2 = $query_results41->fetch_array(MYSQLI_ASSOC); 
+	                //   $first = $row2["first"];
+	                //   $last = $row2["last"];
+	                //   $dob = $row2["dob"];
+	                //   $dod = $row2["dod"];
+	                //   //if(empty($dod)){$dod = "";}
+	                //   echo "<tr><td>".$first." ".$last." (".$dob."-".$dod.")</td>";
+	                //   echo "<td>$role</td></tr>";
+	                //   $query_results41->free();
+	                // }
+	                // echo "</table>";
+	                // $query_results4->free(); 
+
+
+
                   $db->close();
                 }
 
@@ -102,7 +128,7 @@
 
       </div>
 
-    </div>
+
 
 
     <!-- Bootstrap core JavaScript

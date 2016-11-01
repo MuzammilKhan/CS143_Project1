@@ -124,8 +124,12 @@
     $role = $_GET["role"];
 
      $error = (strlen($first) == 0 || strlen($last) == 0 || strlen($dob) == 0 || empty(($sex)) || empty(($role)));
+     $formaterror = ! (preg_match('/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/', $dob) && preg_match('/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/', $dod));
     if ($error) {
         echo "Did you forget to fill in a field?";
+    }
+    else if ($formaterror){
+        echo "DOB and DOD must have the format YYYY-MM-DD";
     }
     else {
       echo "Attempting to add... ";

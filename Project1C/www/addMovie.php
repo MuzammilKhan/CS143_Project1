@@ -133,8 +133,12 @@
     $genres = $_GET["genre"]; //NEED TO FIGURE OUT THIS PART
 
      $error = (strlen($title) == 0 || strlen($year) == 0 || strlen($rating) == 0 || strlen($company) == 0 || empty(($genres)));
+     $formaterror = ! preg_match('/^\d{4}$/', $year) ;
     if ($error) {
         echo "Did you forget to fill in a field?";
+    }
+    else if ($formaterror){
+        echo "Year must have the format YYYY";
     }
     else {
       echo "Attempting to add... ";

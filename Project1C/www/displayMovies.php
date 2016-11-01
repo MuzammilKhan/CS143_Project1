@@ -27,7 +27,7 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
+          <div>
             <div class="inner">
               
                 <h3 class="masthead-brand">CS 143: Movie Database</h3>
